@@ -46,4 +46,37 @@ img {
   overflow: hidden;
 }
 
+.carousel img:not(.visible) {
+  display: none;
+}
+
 /* #endregion Utilities */
+
+/* #region Icons */
+
+i {
+  position: absolute;
+  z-index: 2;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  aspect-ratio: 1 / 1;
+  background-color: #ffffff99;
+  cursor: pointer;
+}
+
+.next_image {
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.prev_image {
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+/* #endregion Icons */
