@@ -32,7 +32,7 @@ Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda
 */
 
 // CREATE AN ARRAY WITH IMAGES SOURCE
-const imgList = ["./../assets/img/01.webp", "./../assets/img/02.webp", "./../assets/img/03.webp", "./../assets/img/04.webp", "./../assets/img/05.webp"];
+const imgList = ["./assets/img/01.webp", "./assets/img/02.webp", "./assets/img/03.webp", "./assets/img/04.webp", "./assets/img/05.webp"];
 
 // SELECT THE CAROUSEL ELEMENT OF THE DOM
 const carouselElement = document.querySelector(".carousel");
@@ -41,29 +41,49 @@ const carouselElement = document.querySelector(".carousel");
 let activeImage = 0;
 
 // CREATE THE ACTIVE IMAGE ELEMENT, SET IT'S ATTRIBUTES AND THE CLASS FOR VISIBILITY
-const imgElement = document.createElement("img");
-imgElement.setAttribute("src", `${imgList[activeImage]}`);
-imgElement.setAttribute("alt", `Image${activeImage}`);
-imgElement.classList.add("visible");
-carouselElement.insertAdjacentElement("beforeend", imgElement);
+for (i = 0; i < imgList.length; i++) {
+  const imgElement = document.createElement("img");
+  imgElement.setAttribute("src", `${imgList[activeImage]}`);
+  imgElement.setAttribute("alt", `Image${activeImage}`);
+  if (i == activeImage) {
+    imgElement.classList.add("visible");
+  }
+  carouselElement.insertAdjacentElement("beforeend", imgElement);
+}
 
 // SELECT THE ICONS TO BROWSE THE IMAGES
 const nextImageIconElement = document.querySelector(".next_image");
 const prevImageIconElement = document.querySelector(".prev_image");
 
+// SELECT THE RENDERED IMAGES
+const insertedImgList = document.querySelectorAll(".carousel > img");
+
+// SELECT THE CURRENT RENDERED IMAGE
+let currentImage = insertedImgList[activeImage];
+console.log(currentImage);
+
 // CREATE EVENT LISTENERS FOR NEXT IMAGE
 nextImageIconElement.addEventListener("click", function() {
-  imgElement.classList.remove("visible");
+  currentImage.classList.remove("visible");
   activeImage++;
-  imgElement.setAttribute("src", `${imgList[activeImage]}`);
-  imgElement.setAttribute("alt", `Image${activeImage}`);
-  imgElement.classList.add("visible");
+  if (activeImage == imgList.length) {
+    activeImage = 0;
+  }
+  currentImage = insertedImgList[activeImage];
+  currentImage.setAttribute("src", `${imgList[activeImage]}`);
+  currentImage.setAttribute("alt", `Image${activeImage}`);
+  currentImage.classList.add("visible");
 });
 
+// CREATE EVENT LISTENERS FOR PREVIOUS IMAGE
 prevImageIconElement.addEventListener("click", function() {
-  imgElement.classList.remove("visible");
+  currentImage.classList.remove("visible");
   activeImage--;
-  imgElement.setAttribute("src", `${imgList[activeImage]}`);
-  imgElement.setAttribute("alt", `Image${activeImage}`);
-  imgElement.classList.add("visible");
+  if (activeImage == -1) {
+    activeImage = imgList.length - 1;
+  }
+  currentImage = insertedImgList[activeImage];
+  currentImage.setAttribute("src", `${imgList[activeImage]}`);
+  currentImage.setAttribute("alt", `Image${activeImage}`);
+  currentImage.classList.add("visible");
 });
