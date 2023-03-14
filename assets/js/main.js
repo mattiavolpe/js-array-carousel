@@ -100,6 +100,7 @@ nextImageIconElement.addEventListener("click", function() {
     activeImage = 0;
   }
   setCurrent();
+  currentImage.style.animation = "slide-down 0.6s 1";
 });
 
 // CREATE EVENT LISTENER FOR PREVIOUS IMAGE
@@ -109,7 +110,8 @@ prevImageIconElement.addEventListener("click", function() {
   if (activeImage == -1) {
     activeImage = imgList.length - 1;
   }
-  setCurrent();  
+  setCurrent();
+  currentImage.style.animation = "slide-up 0.6s 1";
 });
 
 // CREATE EVENT LISTENERS FOR POINTER OVER THUMBNAIL CONTAINER
@@ -166,6 +168,8 @@ function opacity1() {
 function removeClasses() {
   currentImage.classList.remove("visible");
   currentActiveThumbnail.classList.remove("active");
+  // NO SLIDE ANIMATION IF YOU CLICK DIRECTLY ON THUMBNAIL
+  currentImage.style.animation = "";
 }
 
 function setCurrent() {
