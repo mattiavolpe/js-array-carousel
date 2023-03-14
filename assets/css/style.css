@@ -16,13 +16,11 @@ body {
 }
 
 .carousel > img {
-  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 100%;
-  object-fit: cover;
 }
 
 /* #endregion Common */
@@ -49,22 +47,6 @@ body {
 
 .carousel > img:not(.visible) {
   display: none;
-}
-
-#thumbnail_container > div:not(.active)::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #00000077;
-}
-
-#thumbnail_container > div {
-  opacity: 0;
-  transition: 0.4s;
 }
 
 /* #endregion Utilities */
@@ -102,3 +84,41 @@ i:hover {
 }
 
 /* #endregion Icons */
+
+/* #region Thumbnails */
+
+#thumbnail_container{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20%;
+}
+
+#thumbnail_container > div:not(.active)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000077;
+}
+
+#thumbnail_container > div {
+  position: relative;
+  height: 20%;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+#thumbnail_container > div > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+/* #endregion Thumbnails */

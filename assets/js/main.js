@@ -61,43 +61,28 @@ const insertedImgList = document.querySelectorAll(".carousel > img");
 // SELECT THE CURRENT RENDERED IMAGE
 let currentImage = insertedImgList[activeImage];
 
-// CREATE THUMBNAIL CONTAINER
+// CREATE THUMBNAIL CONTAINER AND INSERT IT IN THE DOM
 const thumbnailContainerElement = document.createElement("div");
 thumbnailContainerElement.id = "thumbnail_container";
-
-// GIVE IT POSITIONING AND DIMENSIONS CSS PROPERTIES
-thumbnailContainerElement.style.position = "absolute";
-thumbnailContainerElement.style.right = "0";
-thumbnailContainerElement.style.top = "0";
-thumbnailContainerElement.style.height = "100%";
-thumbnailContainerElement.style.maxHeight = "100%";
-thumbnailContainerElement.style.width = "20%";
-
-// INSERT IT IN THE DOM
 carouselElement.insertAdjacentElement("beforeend", thumbnailContainerElement);
 
 // LET'S TAKE WE WANT TO SEE 5 IMAGES IN THE THUMBNAIL AND NO MORE THAN THIS
 for (let i = 0; i < 5; i++) {
-  const singleThumbnailContainer = document.createElement("div");
-  singleThumbnailContainer.style.position = "relative";
-  singleThumbnailContainer.style.height = "20%";
-  singleThumbnailContainer.style.overflow = "hidden";
 
+  // CREATE THE CONTAINER FOR THE SINGLE THUMBNAIL
+  const singleThumbnailContainer = document.createElement("div");
+
+  // CREATE THE SINGLE THUMBNAIL ELEMENT
   const singleThumbnailElement = document.createElement("img");
   singleThumbnailElement.setAttribute("src", `${imgList[i]}`);
-  singleThumbnailElement.style.display = "block";
-  singleThumbnailElement.style.width = "100%";
-  singleThumbnailElement.style.position = "absolute";
-  singleThumbnailElement.style.top = "50%";
-  singleThumbnailElement.style.left = "50%";
-  singleThumbnailElement.style.transform = "translate(-50%, -50%)";
 
+  // SET THE ACTIVE CLASS TO THE CURRENT IMAGE RELATED THUMBNAIL
   if (i == activeImage) {
     singleThumbnailContainer.classList.add("active");
   }
 
+  // APPEND BOTH THE THUMBNAIL AND IT'S CONTAINER TO THE DOM
   singleThumbnailContainer.insertAdjacentElement("beforeend", singleThumbnailElement);
-
   thumbnailContainerElement.insertAdjacentElement("beforeend", singleThumbnailContainer);
 }
 
@@ -107,7 +92,7 @@ let currentActiveThumbnail = insertedThumbnailList[activeImage];
 
 // <-- EVENTS -->
 
-// CREATE EVENT LISTENERS FOR NEXT IMAGE
+// CREATE EVENT LISTENER FOR NEXT IMAGE
 nextImageIconElement.addEventListener("click", function() {
   removeClasses();
   activeImage++;
@@ -117,7 +102,7 @@ nextImageIconElement.addEventListener("click", function() {
   setCurrent();
 });
 
-// CREATE EVENT LISTENERS FOR PREVIOUS IMAGE
+// CREATE EVENT LISTENER FOR PREVIOUS IMAGE
 prevImageIconElement.addEventListener("click", function() {
   removeClasses();
   activeImage--;
@@ -127,24 +112,28 @@ prevImageIconElement.addEventListener("click", function() {
   setCurrent();  
 });
 
+// CREATE EVENT LISTENERS FOR POINTER OVER THUMBNAIL CONTAINER
 thumbnailContainerElement.addEventListener("pointerover", function() {
   for (i = 0; i < 5; i++) {
     opacity1();
   }
 });
 
+// CREATE EVENT LISTENERS FOR POINTER OUT THUMBNAIL CONTAINER
 thumbnailContainerElement.addEventListener("pointerout", function() {
   for (i = 0; i < 5; i++) {
     opacity0();
   }
 });
 
+// CREATE EVENT LISTENERS FOR POINTER OVER NEXT IMAGE ARROW
 nextImageIconElement.addEventListener("pointerover", function() {
   for (i = 0; i < 5; i++) {
     opacity1();
   }
 });
 
+// CREATE EVENT LISTENERS FOR POINTER OVER PREVIOUS IMAGE ARROW
 prevImageIconElement.addEventListener("pointerover", function() {
   for (i = 0; i < 5; i++) {
     opacity1();
