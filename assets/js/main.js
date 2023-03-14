@@ -30,4 +30,3 @@ Costruiamo del carosello una versione statica contenente solamente un'immagine. 
 Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
 Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
 */
-
