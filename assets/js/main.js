@@ -105,58 +105,71 @@ const insertedThumbnailList = document.querySelectorAll("#thumbnail_container > 
 
 let currentActiveThumbnail = insertedThumbnailList[activeImage];
 
+// <-- EVENTS -->
+
 // CREATE EVENT LISTENERS FOR NEXT IMAGE
 nextImageIconElement.addEventListener("click", function() {
-  currentImage.classList.remove("visible");
-  currentActiveThumbnail.classList.remove("active");
+  removeClasses();
   activeImage++;
   if (activeImage == imgList.length) {
     activeImage = 0;
   }
+  setCurrent();
+});
+
+// CREATE EVENT LISTENERS FOR PREVIOUS IMAGE
+prevImageIconElement.addEventListener("click", function() {
+  removeClasses();
+  activeImage--;
+  if (activeImage == -1) {
+    activeImage = imgList.length - 1;
+  }
+  setCurrent();  
+});
+
+thumbnailContainerElement.addEventListener("pointerover", function() {
+  for (i = 0; i < 5; i++) {
+    opacity1();
+  }
+});
+
+thumbnailContainerElement.addEventListener("pointerout", function() {
+  for (i = 0; i < 5; i++) {
+    opacity0();
+  }
+});
+
+nextImageIconElement.addEventListener("pointerover", function() {
+  for (i = 0; i < 5; i++) {
+    opacity1();
+  }
+});
+
+prevImageIconElement.addEventListener("pointerover", function() {
+  for (i = 0; i < 5; i++) {
+    opacity1();
+  }
+});
+
+// <-- FUNCTIONS -->
+function opacity0() {
+  insertedThumbnailList[i].style.opacity = 0;
+}
+
+function opacity1() {
+  insertedThumbnailList[i].style.opacity = 1;
+}
+
+function removeClasses() {
+  currentImage.classList.remove("visible");
+  currentActiveThumbnail.classList.remove("active");
+}
+
+function setCurrent() {
   currentImage = insertedImgList[activeImage];
   currentActiveThumbnail = insertedThumbnailList[activeImage];
   currentImage.setAttribute("src", `${imgList[activeImage]}`);
   currentImage.setAttribute("alt", `Image${activeImage}`);
   currentImage.classList.add("visible");
   currentActiveThumbnail.classList.add("active");
-});
-
-// CREATE EVENT LISTENERS FOR PREVIOUS IMAGE
-prevImageIconElement.addEventListener("click", function() {
-  currentImage.classList.remove("visible");
-  currentActiveThumbnail.classList.remove("active");
-  activeImage--;
-  if (activeImage == -1) {
-    activeImage = imgList.length - 1;
-  }
-  currentImage = insertedImgList[activeImage];
-  currentActiveThumbnail = insertedThumbnailList[activeImage];
-  currentImage.setAttribute("src", `${imgList[activeImage]}`);
-  currentImage.setAttribute("alt", `Image${activeImage}`);
-  currentImage.classList.add("visible");
-  currentActiveThumbnail.classList.add("active");  
-});
-
-thumbnailContainerElement.addEventListener("mouseover", function() {
-  for (i = 0; i < 5; i++) {
-    insertedThumbnailList[i].style.opacity = 1;
-  }
-})
-
-thumbnailContainerElement.addEventListener("mouseout", function() {
-  for (i = 0; i < 5; i++) {
-    insertedThumbnailList[i].style.opacity = 0;
-  }
-})
-
-nextImageIconElement.addEventListener("mouseover", function() {
-  for (i = 0; i < 5; i++) {
-    insertedThumbnailList[i].style.opacity = 1;
-  }
-})
-
-prevImageIconElement.addEventListener("mouseover", function() {
-  for (i = 0; i < 5; i++) {
-    insertedThumbnailList[i].style.opacity = 1;
-  }
-})
+}

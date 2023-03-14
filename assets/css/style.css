@@ -12,6 +12,7 @@ body {
   /* FALLBACK DECLARATION IN CASE OF BROWSER INCOMPATIBILITY WITH SVH UNIT*/
   height: 100vh;
   height: 100svh;
+  background: #3c3c3c;
 }
 
 .carousel > img {
