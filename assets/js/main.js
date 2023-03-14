@@ -60,30 +60,74 @@ const insertedImgList = document.querySelectorAll(".carousel > img");
 
 // SELECT THE CURRENT RENDERED IMAGE
 let currentImage = insertedImgList[activeImage];
-console.log(currentImage);
+
+// CREATE THUMBNAIL CONTAINER
+const thumbnailContainerElement = document.createElement("div");
+thumbnailContainerElement.id = "thumbnail_container";
+
+// GIVE IT POSITIONING AND DIMENSIONS CSS PROPERTIES
+thumbnailContainerElement.style.position = "absolute";
+thumbnailContainerElement.style.right = "0";
+thumbnailContainerElement.style.top = "0";
+thumbnailContainerElement.style.height = "100%";
+thumbnailContainerElement.style.maxHeight = "100%";
+thumbnailContainerElement.style.width = "20%";
+
+// INSERT IT IN THE DOM
+carouselElement.insertAdjacentElement("beforeend", thumbnailContainerElement);
+
+// LET'S TAKE WE WANT TO SEE 5 IMAGES IN THE THUMBNAIL AND NO MORE THAN THIS
+for (let i = 0; i < 5; i++) {
+  const singleThumbnailContainer = document.createElement("div");
+  singleThumbnailContainer.style.position = "relative";
+  singleThumbnailContainer.style.height = "20%";
+  const singleThumbnailElement = document.createElement("img");
+  singleThumbnailElement.setAttribute("src", `${imgList[i]}`);
+  singleThumbnailElement.style.display = "block";
+  singleThumbnailElement.style.height = "100%";
+  singleThumbnailElement.style.margin = "auto";
+
+  if (i == activeImage) {
+    singleThumbnailContainer.classList.add("active");
+  }
+
+  singleThumbnailContainer.insertAdjacentElement("beforeend", singleThumbnailElement);
+
+  thumbnailContainerElement.insertAdjacentElement("beforeend", singleThumbnailContainer);
+}
+
+const insertedThumbnailList = document.querySelectorAll("#thumbnail_container > div");
+
+let currentActiveThumbnail = insertedThumbnailList[activeImage];
 
 // CREATE EVENT LISTENERS FOR NEXT IMAGE
 nextImageIconElement.addEventListener("click", function() {
   currentImage.classList.remove("visible");
+  currentActiveThumbnail.classList.remove("active");
   activeImage++;
   if (activeImage == imgList.length) {
     activeImage = 0;
   }
   currentImage = insertedImgList[activeImage];
+  currentActiveThumbnail = insertedThumbnailList[activeImage];
   currentImage.setAttribute("src", `${imgList[activeImage]}`);
   currentImage.setAttribute("alt", `Image${activeImage}`);
   currentImage.classList.add("visible");
+  currentActiveThumbnail.classList.add("active");
 });
 
 // CREATE EVENT LISTENERS FOR PREVIOUS IMAGE
 prevImageIconElement.addEventListener("click", function() {
   currentImage.classList.remove("visible");
+  currentActiveThumbnail.classList.remove("active");
   activeImage--;
   if (activeImage == -1) {
     activeImage = imgList.length - 1;
   }
   currentImage = insertedImgList[activeImage];
+  currentActiveThumbnail = insertedThumbnailList[activeImage];
   currentImage.setAttribute("src", `${imgList[activeImage]}`);
   currentImage.setAttribute("alt", `Image${activeImage}`);
   currentImage.classList.add("visible");
+  currentActiveThumbnail.classList.add("active");  
 });
