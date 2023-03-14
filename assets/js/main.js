@@ -90,7 +90,7 @@ const insertedThumbnailList = document.querySelectorAll("#thumbnail_container > 
 
 let currentActiveThumbnail = insertedThumbnailList[activeImage];
 
-// <-- EVENTS -->
+// <---------- EVENTS ---------->
 
 // CREATE EVENT LISTENER FOR NEXT IMAGE
 nextImageIconElement.addEventListener("click", function() {
@@ -140,7 +140,8 @@ prevImageIconElement.addEventListener("pointerover", function() {
   }
 });
 
-// <-- FUNCTIONS -->
+// <---------- FUNCTIONS ---------->
+
 function opacity0() {
   insertedThumbnailList[i].style.opacity = 0;
 }
