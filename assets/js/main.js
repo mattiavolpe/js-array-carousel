@@ -131,3 +131,27 @@ prevImageIconElement.addEventListener("click", function() {
   currentImage.classList.add("visible");
   currentActiveThumbnail.classList.add("active");  
 });
+
+thumbnailContainerElement.addEventListener("mouseover", function() {
+  for (i = 0; i < 5; i++) {
+    insertedThumbnailList[i].style.opacity = 1;
+  }
+})
+
+thumbnailContainerElement.addEventListener("mouseout", function() {
+  for (i = 0; i < 5; i++) {
+    insertedThumbnailList[i].style.opacity = 0;
+  }
+})
+
+nextImageIconElement.addEventListener("mouseover", function() {
+  for (i = 0; i < 5; i++) {
+    insertedThumbnailList[i].style.opacity = 1;
+  }
+})
+
+prevImageIconElement.addEventListener("mouseover", function() {
+  for (i = 0; i < 5; i++) {
+    insertedThumbnailList[i].style.opacity = 1;
+  }
+})
