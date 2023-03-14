@@ -16,7 +16,10 @@ body {
 
 .carousel > img {
   display: block;
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-height: 100%;
   object-fit: cover;
 }
@@ -82,14 +85,14 @@ i:hover {
 
 .next_image {
   top: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  right: 10% ;
+  transform: translate(50%, 0);
 }
 
 .prev_image {
   bottom: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  right: 10% ;
+  transform: translate(50%, 0);
 }
 
 /* #endregion Icons */
