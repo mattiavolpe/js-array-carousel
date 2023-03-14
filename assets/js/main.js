@@ -81,11 +81,16 @@ for (let i = 0; i < 5; i++) {
   const singleThumbnailContainer = document.createElement("div");
   singleThumbnailContainer.style.position = "relative";
   singleThumbnailContainer.style.height = "20%";
+  singleThumbnailContainer.style.overflow = "hidden";
+
   const singleThumbnailElement = document.createElement("img");
   singleThumbnailElement.setAttribute("src", `${imgList[i]}`);
   singleThumbnailElement.style.display = "block";
-  singleThumbnailElement.style.height = "100%";
-  singleThumbnailElement.style.margin = "auto";
+  singleThumbnailElement.style.width = "100%";
+  singleThumbnailElement.style.position = "absolute";
+  singleThumbnailElement.style.top = "50%";
+  singleThumbnailElement.style.left = "50%";
+  singleThumbnailElement.style.transform = "translate(-50%, -50%)";
 
   if (i == activeImage) {
     singleThumbnailContainer.classList.add("active");
