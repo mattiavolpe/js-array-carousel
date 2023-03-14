@@ -140,6 +140,19 @@ prevImageIconElement.addEventListener("pointerover", function() {
   }
 });
 
+// MAKE CURRENT IMAGE AND THUMBNAIL CHANGE IN CASE OF CLICK ON THUMBNAIL
+insertedThumbnailList.forEach(thumbnail => {
+  thumbnail.addEventListener("click", function() {
+    removeClasses();
+    for (i = 0; i < insertedThumbnailList.length; i++) {
+      if (insertedThumbnailList[i] == thumbnail) {
+        activeImage = i;
+        setCurrent();
+      }
+    }
+  })  
+});
+
 // <---------- FUNCTIONS ---------->
 
 function opacity0() {

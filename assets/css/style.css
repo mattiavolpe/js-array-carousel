@@ -111,6 +111,7 @@ i:hover {
   overflow: hidden;
   opacity: 0;
   transition: 0.4s;
+  cursor: pointer;
 }
 
 #thumbnail_container > div > img {
@@ -119,6 +120,10 @@ i:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+}
+
+#thumbnail_container > div > img:hover {
+  cursor: pointer;
 }
 
 /* #endregion Thumbnails */
