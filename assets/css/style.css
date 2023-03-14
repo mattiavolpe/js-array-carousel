@@ -95,6 +95,15 @@ i:hover {
   width: 20%;
 }
 
+#thumbnail_container > div {
+  position: relative;
+  height: 20%;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
 #thumbnail_container > div:not(.active)::after {
   content: "";
   position: absolute;
@@ -105,13 +114,8 @@ i:hover {
   background-color: #00000077;
 }
 
-#thumbnail_container > div {
-  position: relative;
-  height: 20%;
-  overflow: hidden;
-  opacity: 0;
-  transition: 0.4s;
-  cursor: pointer;
+#thumbnail_container > div:hover::after {
+  background-color: transparent;
 }
 
 #thumbnail_container > div > img {
