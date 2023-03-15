@@ -43,8 +43,8 @@ let activeImage = 0;
 // CREATE THE ACTIVE IMAGE ELEMENT, SET IT'S ATTRIBUTES AND THE CLASS FOR VISIBILITY
 for (i = 0; i < imgList.length; i++) {
   const imgElement = document.createElement("img");
-  imgElement.setAttribute("src", `${imgList[activeImage]}`);
-  imgElement.setAttribute("alt", `Image${activeImage}`);
+  imgElement.setAttribute("src", `${imgList[i]}`);
+  imgElement.setAttribute("alt", `Image${i}`);
   if (i == activeImage) {
     imgElement.classList.add("visible");
   }
