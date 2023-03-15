@@ -41,7 +41,7 @@ const carouselElement = document.querySelector(".carousel");
 let activeImage = 0;
 
 // CREATE THE ACTIVE IMAGE ELEMENT, SET IT'S ATTRIBUTES AND THE CLASS FOR VISIBILITY
-for (i = 0; i < imgList.length; i++) {
+for (let i = 0; i < imgList.length; i++) {
   const imgElement = document.createElement("img");
   imgElement.setAttribute("src", `${imgList[i]}`);
   imgElement.setAttribute("alt", `Image${i}`);
@@ -116,29 +116,29 @@ prevImageIconElement.addEventListener("click", function() {
 
 // CREATE EVENT LISTENERS FOR POINTER OVER THUMBNAIL CONTAINER
 thumbnailContainerElement.addEventListener("pointerover", function() {
-  for (i = 0; i < 5; i++) {
-    opacity1();
+  for (let i = 0; i < 5; i++) {
+    opacity1(i);
   }
 });
 
 // CREATE EVENT LISTENERS FOR POINTER OUT THUMBNAIL CONTAINER
 thumbnailContainerElement.addEventListener("pointerout", function() {
-  for (i = 0; i < 5; i++) {
-    opacity0();
+  for (let i = 0; i < 5; i++) {
+    opacity0(i);
   }
 });
 
 // CREATE EVENT LISTENERS FOR POINTER OVER NEXT IMAGE ARROW
 nextImageIconElement.addEventListener("pointerover", function() {
-  for (i = 0; i < 5; i++) {
-    opacity1();
+  for (let i = 0; i < 5; i++) {
+    opacity1(i);
   }
 });
 
 // CREATE EVENT LISTENERS FOR POINTER OVER PREVIOUS IMAGE ARROW
 prevImageIconElement.addEventListener("pointerover", function() {
-  for (i = 0; i < 5; i++) {
-    opacity1();
+  for (let i = 0; i < 5; i++) {
+    opacity1(i);
   }
 });
 
@@ -146,7 +146,7 @@ prevImageIconElement.addEventListener("pointerover", function() {
 insertedThumbnailList.forEach(thumbnail => {
   thumbnail.addEventListener("click", function() {
     removeClasses();
-    for (i = 0; i < insertedThumbnailList.length; i++) {
+    for (let i = 0; i < insertedThumbnailList.length; i++) {
       if (insertedThumbnailList[i] == thumbnail) {
         activeImage = i;
         setCurrent();
@@ -157,11 +157,11 @@ insertedThumbnailList.forEach(thumbnail => {
 
 // <---------- FUNCTIONS ---------->
 
-function opacity0() {
+function opacity0(i) {
   insertedThumbnailList[i].style.opacity = 0;
 }
 
-function opacity1() {
+function opacity1(i) {
   insertedThumbnailList[i].style.opacity = 1;
 }
 
